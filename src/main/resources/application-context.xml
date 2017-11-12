@@ -1,0 +1,58 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="startEngine" class="com.d23.gaming.Engine">
+		<property name="character" ref="you"/>
+		<property name="location" ref="livingroom"/>
+	</bean>
+
+
+	<bean id="you" class="com.d23.gaming.entities.Character">
+		<property name="name" value="you"/>
+		<property name="description" value="you don't look like very much, but it should work out anyway"/>
+		<property name="items">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="livingroom" class="com.d23.gaming.entities.Location">
+		<property name="name" value="Living Room"/>
+		<property name="description" value="You are in the living room.  There's not much here, but it is very nice and welcoming"/>
+		<property name="passages">
+			<list>
+				<ref bean="livingroomtokitchen"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="kitchen" class="com.d23.gaming.entities.Location">
+		<property name="name" value="Kitchen"/>
+		<property name="description" value="You are in the kitchen.  It smells very nice, like warm bread."/>
+		<property name="passages">
+			<list>
+				<ref bean="kitchentolivingroom"/>
+			</list>
+		</property>		
+	</bean>
+	
+	<bean id="livingroomtokitchen" class="com.d23.gaming.entities.Passage">
+		<property name="name" value="kitchen hall"/>
+		<property name="description" value="There is a hallway to the kitchen"/>
+		<property name="method" value="walk"/>
+		<property name="direction" value="north"/>
+		<property name="location" ref="kitchen"/>
+	</bean>
+	
+	<bean id="kitchentolivingroom" class="com.d23.gaming.entities.Passage">
+		<property name="name" value="living room"/>
+		<property name="description" value="There is a hallway to the living room"/>
+		<property name="method" value="walk"/>
+		<property name="direction" value="south"/>
+		<property name="location" ref="livingroom"/>
+	</bean>	
+
+
+</beans>
