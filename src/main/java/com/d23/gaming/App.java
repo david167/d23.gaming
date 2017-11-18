@@ -17,8 +17,10 @@ public class App implements CommandLineRunner {
 	
     public static void main( String[] args )
     {
+    	  logger.info("hihihihihih i like tomatoes");
         SpringApplication app = new SpringApplication(App.class);
         app.run(args);
+      
 
     }
 
